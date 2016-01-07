@@ -1,0 +1,41 @@
+{
+  "name": "bedrock-messages-client",
+  "version": "0.0.0-dev",
+  "description": "Bedrock messages client module",
+  "main": "./lib/client",
+  "scripts": {
+    "test": "node bedrock/test.js test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-messages-client"
+  },
+  "keywords": [
+    "bedrock",
+    "messages"
+  ],
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "http://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-messages-client/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-messages-client",
+  "dependencies": {
+    "async": "^1.5.1",
+    "lodash": "^3.10.1",
+    "node-uuid": "^1.4.7",
+    "request": "^2.67.0",
+    "sinon": "^1.17.2"
+  },
+  "peerDependencies": {
+    "bedrock": "^1.0.0",
+    "bedrock-jobs": "^1.0.0",
+    "bedrock-mongodb": "^1.0.0"
+  },
+  "directories": {
+    "lib": "./lib"
+  }
+}
