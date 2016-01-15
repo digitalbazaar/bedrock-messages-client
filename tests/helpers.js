@@ -44,21 +44,26 @@ api.createMessages = function(recipient, count) {
 api.createMessage = function(options) {
   // console.log('OPTIONS', options);
   var testMessage = {
+    body: uuid(),
+    date: new Date().toJSON(),
     holder: uuid(),
     link: uuid(),
     recipient: uuid(),
     sender: uuid(),
-    date: new Date().toJSON()
+    subject: uuid()
   };
   _.assign(testMessage, options);
   var message = {
     '@context': 'https://example.com/messages',
+    date: testMessage.date,
     recipient: testMessage.recipient,
+    sender: testMessage.sender,
+    subject: testMessage.subject,
+    type: 'CredentialNotification',
     content: {
-      date: testMessage.date,
+      body: testMessage.body,
       holder: testMessage.holder,
       link: testMessage.link,
-      sender: testMessage.sender
     }
   };
   return message;

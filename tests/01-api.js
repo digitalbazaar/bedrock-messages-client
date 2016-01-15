@@ -50,9 +50,13 @@ describe('bedrock-messages-client API requests', function() {
       it('polls a server and receives no messages', function(done) {
         async.auto({
           poll: function(callback) {
-            brMessagesClient._pollServer(
-              helpers.createJob(), helpers.createUrl(serverOptions),
-              user, callback);
+            var options = {
+              job: helpers.createJob(),
+              endpoint: helpers.createUrl(serverOptions),
+              privateKeyPem: user.keys.privateKey.privateKeyPem,
+              publicKeyId: user.keys.publicKey.id
+            };
+            brMessagesClient._pollServer(options, callback);
           },
           query: ['poll', function(callback) {
             store.find({}).toArray(callback);
@@ -69,12 +73,16 @@ describe('bedrock-messages-client API requests', function() {
       it('polls a server and receives five messages', function(done) {
         async.auto({
           poll: function(callback) {
-            brMessagesClient._pollServer(
-              helpers.createJob(), helpers.createUrl(serverOptions),
-              user, callback);
+            var options = {
+              job: helpers.createJob(),
+              endpoint: helpers.createUrl(serverOptions),
+              privateKeyPem: user.keys.privateKey.privateKeyPem,
+              publicKeyId: user.keys.publicKey.id
+            };
+            brMessagesClient._pollServer(options, callback);
           },
           query: ['poll', function(callback, results) {
-            var query = {'meta.events.batch': results.poll.batch};
+            var query = {'value.meta.events.batch': results.poll.batch};
             store.find(query).toArray(callback);
           }],
           test: ['query', function(callback, results) {
@@ -88,12 +96,16 @@ describe('bedrock-messages-client API requests', function() {
       it('polls a server and receives twenty-one messages', function(done) {
         async.auto({
           poll: function(callback) {
-            brMessagesClient._pollServer(
-              helpers.createJob(), helpers.createUrl(serverOptions),
-              user, callback);
+            var options = {
+              job: helpers.createJob(),
+              endpoint: helpers.createUrl(serverOptions),
+              privateKeyPem: user.keys.privateKey.privateKeyPem,
+              publicKeyId: user.keys.publicKey.id
+            };
+            brMessagesClient._pollServer(options, callback);
           },
           query: ['poll', function(callback, results) {
-            var query = {'meta.events.batch': results.poll.batch};
+            var query = {'value.meta.events.batch': results.poll.batch};
             store.find(query).toArray(callback);
           }],
           test: ['query', function(callback, results) {
