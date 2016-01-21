@@ -22,6 +22,7 @@ var store = database.collections.messages;
 
 describe('bedrock-messages-client API requests', function() {
   describe('pollMessagesServer Function', function() {
+    // NOTE: the tests in the block are designed to be run in series
     describe('polls a single server for new messages', function() {
       var postStub;
       var user = mockData.identities.rsa4096;
@@ -82,6 +83,7 @@ describe('bedrock-messages-client API requests', function() {
             brMessagesClient._pollServer(options, callback);
           },
           query: ['poll', function(callback, results) {
+            console.log('$$$$$$$$$', results.poll);
             var query = {'value.meta.events.batch': results.poll.batch};
             store.find(query).toArray(callback);
           }],
