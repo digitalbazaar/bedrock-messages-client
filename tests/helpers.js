@@ -47,7 +47,7 @@ api.createMessage = function(options) {
     body: uuid(),
     date: new Date().toJSON(),
     holder: uuid(),
-    link: uuid(),
+    pickupLocation: uuid(),
     recipient: uuid(),
     sender: uuid(),
     subject: uuid()
@@ -63,7 +63,7 @@ api.createMessage = function(options) {
     content: {
       body: testMessage.body,
       holder: testMessage.holder,
-      link: testMessage.link,
+      pickupLocation: testMessage.pickupLocation,
     }
   };
   return message;
