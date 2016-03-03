@@ -1,6 +1,6 @@
 {
   "name": "bedrock-messages-client",
-  "version": "0.0.0-dev",
+  "version": "0.1.0-dev",
   "description": "Bedrock messages client module",
   "main": "./lib/client",
   "scripts": {
@@ -28,12 +28,15 @@
     "lodash": "^3.10.1",
     "node-uuid": "^1.4.7",
     "request": "^2.67.0",
-    "sinon": "^1.17.2"
+    "sinon": "^1.17.2",
+    "bedrock": "^1.0.0",
+    "bedrock-jobs": "^2.0.0",
+    "bedrock-mongodb": "^2.0.0"
   },
   "peerDependencies": {
     "bedrock": "^1.0.0",
-    "bedrock-jobs": "^1.0.0",
-    "bedrock-mongodb": "^1.0.0"
+    "bedrock-jobs": "^2.0.0",
+    "bedrock-mongodb": "^2.0.0"
   },
   "directories": {
     "lib": "./lib"
