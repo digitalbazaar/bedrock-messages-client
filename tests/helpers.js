@@ -48,7 +48,7 @@ api.createMessage = function(options) {
     date: new Date().toJSON(),
     holder: uuid(),
     potentialAction: [{
-      type: 'ConfirmAction',
+      type: 'ViewAction',
       target: {
         type: 'EntryPoint',
         urlTemplate: uuid(),
