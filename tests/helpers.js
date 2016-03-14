@@ -47,7 +47,14 @@ api.createMessage = function(options) {
     body: uuid(),
     date: new Date().toJSON(),
     holder: uuid(),
-    pickupLocation: uuid(),
+    potentialAction: [{
+      type: 'AcceptCredentialAction',
+      target: {
+        type: 'EntryPoint',
+        urlTemplate: uuid(),
+        httpMethod: 'GET'
+      }
+    }],
     recipient: uuid(),
     sender: uuid(),
     subject: uuid()
@@ -63,7 +70,7 @@ api.createMessage = function(options) {
     content: {
       body: testMessage.body,
       holder: testMessage.holder,
-      pickupLocation: testMessage.pickupLocation,
+      potentialAction: testMessage.potentialAction,
     }
   };
   return message;
