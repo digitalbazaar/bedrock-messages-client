@@ -19,6 +19,7 @@ var sinon = require('sinon');
 var uuid = require('node-uuid').v4;
 var mockData = require('./mock.data');
 var store = database.collections.messages;
+var scheduler = require('bedrock-jobs');
 
 describe('bedrock-messages-client API requests', function() {
   describe('pollMessagesServer Function', function() {
@@ -118,6 +119,57 @@ describe('bedrock-messages-client API requests', function() {
           }]
         }, done);
       });
+    });
+  });
+
+  describe.only('start API', function() {
+    before(function() {
+      helpers.removeCollections(function() {
+      });
+    });
+
+    after(function() {
+      helpers.removeCollections(function() {
+      });
+    });
+
+    it('one client', function(done) {
+      var endpoint = 'www.example.com';
+      var jobId = brMessagesClient._createJobId(endpoint);
+
+      async.waterfall([
+        function(callback) {
+          brMessagesClient.start(endpoint, 1, callback);
+        },
+        function(callback) {
+          scheduler.getJob(jobId, function(err, job, meta) {
+            should.not.exist(err);
+            should.exist(job);
+            job.schedule.should.equal('R/PT1M');
+            callback();
+          });
+        },
+        function(callback) {
+          brMessagesClient.start(endpoint, 10, callback);
+        },
+        function(callback) {
+          scheduler.getJob(jobId, function(err, job, meta) {
+            should.not.exist(err);
+            should.exist(job);
+            job.schedule.should.equal('R/PT10M');
+            callback();
+          });
+        },
+        function(callback) {
+          database.collections.job.find().toArray(function(err, results) {
+            should.exist(results);
+            results.should.be.an('array');
+            results.should.be.have.length(1);
+            callback();
+          });
+        }], function() {
+          done();
+        });
     });
   });
 });
