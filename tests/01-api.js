@@ -123,14 +123,12 @@ describe('bedrock-messages-client API requests', function() {
   });
 
   describe.only('start API', function() {
-    before(function() {
-      helpers.removeCollections(function() {
-      });
+    before(function(done) {
+      helpers.removeCollections(done);
     });
 
-    after(function() {
-      helpers.removeCollections(function() {
-      });
+    after(function(done) {
+      helpers.removeCollections(done);
     });
 
     it('one client', function(done) {
