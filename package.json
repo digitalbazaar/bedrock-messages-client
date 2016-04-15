@@ -25,13 +25,10 @@
   "homepage": "https://github.com/digitalbazaar/bedrock-messages-client",
   "dependencies": {
     "async": "^1.5.1",
-    "lodash": "^3.10.1",
+    "lodash": "^4.0.0",
     "node-uuid": "^1.4.7",
     "request": "^2.67.0",
-    "sinon": "^1.17.2",
-    "bedrock": "^1.0.0",
-    "bedrock-jobs": "^2.0.0",
-    "bedrock-mongodb": "^2.0.0"
+    "sinon": "^1.17.2"
   },
   "peerDependencies": {
     "bedrock": "^1.0.0",
