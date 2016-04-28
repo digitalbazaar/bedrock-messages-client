@@ -137,7 +137,7 @@ api.removeCollections = function(callback) {
   var collectionNames = ['messages', 'identity', 'publicKey', 'job'];
   database.openCollections(collectionNames, function(err) {
     async.each(collectionNames, function(collectionName, callback) {
-      database.collections[collectionName].remove({}, callback);
+      database.collections[collectionName].find({}, callback);
     }, function(err) {
       callback(err);
     });
@@ -152,7 +152,7 @@ function insertTestData(mockData, callback) {
         brIdentity.insert(null, identity.identity, callback);
       },
       function(callback) {
-        brKey.addPublicKey(null, identity.keys.publicKey, callback);
+        brKey.addPublicKey(null, identity.keys.publicKey, identity.keys.privateKey, callback);
       }
     ], callback);
   }, function(err) {

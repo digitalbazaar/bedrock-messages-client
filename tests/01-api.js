@@ -21,7 +21,13 @@ var mockData = require('./mock.data');
 var store = database.collections.messages;
 var scheduler = require('bedrock-jobs');
 
-describe('bedrock-messages-client API requests', function() {
+describe.only('bedrock-messages-client API requests', function() {
+  before('Prepare the database', function(done) {
+    helpers.prepareDatabase(mockData, done);
+  });
+  after('Remove test data', function(done) {
+    helpers.removeCollections(done);
+  });
   describe('pollMessagesServer Function', function() {
     // NOTE: the tests in the block are designed to be run in series
     describe('polls a single server for new messages', function() {
@@ -122,7 +128,7 @@ describe('bedrock-messages-client API requests', function() {
     });
   });
 
-  describe.only('start API', function() {
+  describe('start API', function() {
     before(function(done) {
       helpers.removeCollections(done);
     });
