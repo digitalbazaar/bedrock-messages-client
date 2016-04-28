@@ -21,7 +21,7 @@ var mockData = require('./mock.data');
 var store = database.collections.messages;
 var scheduler = require('bedrock-jobs');
 
-describe.only('bedrock-messages-client API requests', function() {
+describe('bedrock-messages-client API requests', function() {
   before('Prepare the database', function(done) {
     helpers.prepareDatabase(mockData, done);
   });
