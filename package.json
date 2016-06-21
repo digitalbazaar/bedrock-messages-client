@@ -1,6 +1,6 @@
 {
   "name": "bedrock-messages-client",
-  "version": "0.2.4-dev",
+  "version": "0.2.4",
   "description": "Bedrock messages client module",
   "main": "./lib/client",
   "scripts": {
