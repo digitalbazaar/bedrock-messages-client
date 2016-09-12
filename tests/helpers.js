@@ -70,7 +70,7 @@ api.createMessage = function(options) {
     content: {
       body: testMessage.body,
       holder: testMessage.holder,
-      potentialAction: testMessage.potentialAction,
+      potentialAction: testMessage.potentialAction
     }
   };
   return message;
@@ -136,7 +136,7 @@ api.prepareDatabase = function(mockData, callback) {
 api.removeCollections = function(callback) {
   var collectionNames = ['messages', 'identity', 'publicKey', 'job',
     'messageClient'];
-  database.openCollections(collectionNames, function(err) {
+  database.openCollections(collectionNames, function() {
     async.each(collectionNames, function(collectionName, callback) {
       database.collections[collectionName].find({}, callback);
     }, function(err) {
@@ -153,7 +153,8 @@ function insertTestData(mockData, callback) {
         brIdentity.insert(null, identity.identity, callback);
       },
       function(callback) {
-        brKey.addPublicKey(null, identity.keys.publicKey, identity.keys.privateKey, callback);
+        brKey.addPublicKey(
+          null, identity.keys.publicKey, identity.keys.privateKey, callback);
       }
     ], callback);
   }, function(err) {

@@ -61,13 +61,13 @@ describe('bedrock-messages-client API requests', function() {
           }],
           verify1: ['pollServer1', function(callback) {
             database.collections.messageClient.findOne({
-                id: database.hash(client.id)
-              }, {}, function(err, record) {
-                should.not.exist(err);
-                should.exist(record);
-                record.meta.recentPollErrorCount.should.equal(1);
-                callback();
-              });
+              id: database.hash(client.id)
+            }, {}, function(err, record) {
+              should.not.exist(err);
+              should.exist(record);
+              record.meta.recentPollErrorCount.should.equal(1);
+              callback();
+            });
           }],
           pollServer2: ['verify1', function(callback) {
             brMessagesClient._pollServer({client: client}, function(err) {
@@ -77,13 +77,13 @@ describe('bedrock-messages-client API requests', function() {
           }],
           verify2: ['pollServer2', function(callback) {
             database.collections.messageClient.findOne({
-                id: database.hash(client.id)
-              }, {}, function(err, record) {
-                should.not.exist(err);
-                should.exist(record);
-                record.meta.recentPollErrorCount.should.equal(2);
-                callback();
-              });
+              id: database.hash(client.id)
+            }, {}, function(err, record) {
+              should.not.exist(err);
+              should.exist(record);
+              record.meta.recentPollErrorCount.should.equal(2);
+              callback();
+            });
           }],
           pollServer3: ['verify2', function(callback) {
             brMessagesClient._pollServer({client: client}, function(err) {
@@ -93,14 +93,14 @@ describe('bedrock-messages-client API requests', function() {
           }],
           verify3: ['pollServer3', function(callback) {
             database.collections.messageClient.findOne({
-                id: database.hash(client.id)
-              }, {}, function(err, record) {
-                should.not.exist(err);
-                should.exist(record);
-                record.meta.recentPollErrorCount.should.equal(
-                  config['messages-client'].maxPollErrorsBeforeNotify);
-                callback();
-              });
+              id: database.hash(client.id)
+            }, {}, function(err, record) {
+              should.not.exist(err);
+              should.exist(record);
+              record.meta.recentPollErrorCount.should.equal(
+                config['messages-client'].maxPollErrorsBeforeNotify);
+              callback();
+            });
           }]
         }, done);
       });
@@ -253,9 +253,7 @@ describe('bedrock-messages-client API requests', function() {
             results.should.be.an('array');
             callback();
           });
-        }], function() {
-          done();
-        });
+        }], done);
     });
   });
 });
