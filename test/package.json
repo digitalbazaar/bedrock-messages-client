@@ -1,0 +1,31 @@
+{
+  "name": "bedrock-messages-client-test",
+  "version": "0.0.1-0",
+  "description": "Bedrock messages client module",
+  "scripts": {
+    "test": "node --preserve-symlinks test.js test"
+  },
+  "dependencies": {
+    "async": "^1.5.1",
+    "bedrock": "^1.0.0",
+    "bedrock-docs": "^2.0.0",
+    "bedrock-express": "^2.0.0",
+    "bedrock-identity": "^4.2.2",
+    "bedrock-jobs": "^2.0.0",
+    "bedrock-key": "^3.1.0",
+    "bedrock-messages": "^0.1.2",
+    "bedrock-mongodb": "^3.0.0",
+    "bedrock-passport": "^3.0.0",
+    "bedrock-permission": "^2.3.0",
+    "bedrock-rest": "^2.0.0",
+    "bedrock-requirejs": "^2.0.0",
+    "bedrock-server": "^2.0.0",
+    "bedrock-test": "^1.0.0",
+    "bedrock-validation": "^2.0.0",
+    "bedrock-views": "^4.0.0",
+    "lodash": "^4.0.0",
+    "request": "^2.67.0",
+    "sinon": "^1.17.2",
+    "uuid": "^2.0.2"
+  }
+}

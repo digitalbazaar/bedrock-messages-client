@@ -32,8 +32,12 @@
   },
   "peerDependencies": {
     "bedrock": "^1.0.0",
+    "bedrock-identity": "^4.2.2",
     "bedrock-jobs": "^2.0.0",
-    "bedrock-mongodb": "^3.0.0"
+    "bedrock-key": "^3.1.0",
+    "bedrock-messages": "^0.1.2",
+    "bedrock-mongodb": "^3.0.0",
+    "bedrock-permission": "^2.3.0"
   },
   "directories": {
     "lib": "./lib"

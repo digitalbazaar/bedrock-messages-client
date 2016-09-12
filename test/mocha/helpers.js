@@ -32,29 +32,22 @@ api.createJob = function() {
   return newJob;
 };
 
-api.createMessages = function(recipient, count) {
+api.createMessages = function(recipient, count, messageType) {
   count = count || 1;
   var messages = [];
   for(var i = 0; i < count; i++) {
-    messages.push(api.createMessage({recipient: recipient}));
+    messages.push(api.createMessage({
+      recipient: recipient,
+      messageType: messageType
+    }));
   }
   return messages;
 };
 
 api.createMessage = function(options) {
-  // console.log('OPTIONS', options);
   var testMessage = {
     body: uuid(),
     date: new Date().toJSON(),
-    holder: uuid(),
-    potentialAction: [{
-      type: 'ViewAction',
-      target: {
-        type: 'EntryPoint',
-        urlTemplate: uuid(),
-        httpMethod: 'GET'
-      }
-    }],
     recipient: uuid(),
     sender: uuid(),
     subject: uuid()
@@ -66,11 +59,9 @@ api.createMessage = function(options) {
     recipient: testMessage.recipient,
     sender: testMessage.sender,
     subject: testMessage.subject,
-    type: 'CredentialNotification',
+    type: options.messageType || uuid(),
     content: {
-      body: testMessage.body,
-      holder: testMessage.holder,
-      potentialAction: testMessage.potentialAction
+      body: testMessage.body
     }
   };
   return message;
@@ -93,19 +84,15 @@ api.createIdentity = function(userName) {
 };
 
 api.createKeyPair = function(options) {
-  var userName = options.userName;
   var publicKey = options.publicKey;
   var privateKey = options.privateKey;
-  var ownerId = null;
-  if(userName === 'userUnknown') {
-    ownerId = '';
-  } else {
-    ownerId = options.userId;
-  }
+  var ownerId = options.userId;
+  var id = options.id || uuid();
+  var keyId = config.server.baseUri + config.key.basePath + '/' + id;
   var newKeyPair = {
     publicKey: {
       '@context': 'https://w3id.org/identity/v1',
-      id: ownerId + '/keys/1',
+      id: keyId,
       type: 'CryptographicKey',
       owner: ownerId,
       label: 'Signing Key 1',
@@ -115,7 +102,7 @@ api.createKeyPair = function(options) {
       type: 'CryptographicKey',
       owner: ownerId,
       label: 'Signing Key 1',
-      publicKey: ownerId + '/keys/1',
+      publicKey: keyId,
       privateKeyPem: privateKey
     }
   };

@@ -10,6 +10,8 @@ var helpers = require('./helpers');
 var data = {};
 module.exports = data;
 
+data.recipientId = 'bdd07c25-ed88-4dc1-b8da-d8d7f6649431';
+
 data.messageServers = {};
 data.messageServers.alpha = {
   id: 'stubbed-server-alpha',
@@ -33,10 +35,11 @@ data.identities = identities;
 
 // user with a valid 4096 bit RSA keypair and issuer permissions
 var userName = 'rsa4096';
+var keyId = 'c05b5ed2-4fe2-4be1-93bf-d76b5f1ec81d';
 identities[userName] = {};
 identities[userName].identity = helpers.createIdentity(userName);
 identities[userName].keys = helpers.createKeyPair({
-  userName: userName,
+  id: keyId,
   userId: identities[userName].identity.id,
   publicKey: '-----BEGIN PUBLIC KEY-----\n' +
     'MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAxBTbcgMr6WY74XoUkXBg\n' +
