@@ -2,9 +2,9 @@
   "name": "bedrock-messages-client",
   "version": "0.2.7-0",
   "description": "Bedrock messages client module",
-  "main": "./lib/client",
+  "main": "./lib",
   "scripts": {
-    "test": "node bedrock/test.js test"
+    "test": "node test/test.js test"
   },
   "repository": {
     "type": "git",
