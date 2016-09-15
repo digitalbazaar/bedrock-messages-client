@@ -1,5 +1,11 @@
 # bedrock-angular-session ChangeLog
 
+## 1.0.0 - 2016-09-15
+
+### Changed
+- **BREAKING** incoming messages are now mutated via handlers for
+  `bedrock-messages-client.message.<type>` events.
+
 ## 0.2.6 - 2016-09-12
 
 ### Fixed
