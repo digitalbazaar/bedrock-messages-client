@@ -1,5 +1,10 @@
 # bedrock-angular-session ChangeLog
 
+## 1.0.1 - 2018-05-10
+
+### Changed
+- Use `brPermission.checkPermission`.
+
 ## 1.0.0 - 2016-09-15
 
 ### Changed
