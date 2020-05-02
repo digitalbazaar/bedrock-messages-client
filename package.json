@@ -4,7 +4,9 @@
   "description": "Bedrock messages client module",
   "main": "./lib",
   "scripts": {
-    "test": "node test/test.js test"
+    "test": "node test/test.js test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,8 @@
     "lodash": "^4.0.0",
     "request": "^2.67.0",
     "sinon": "^1.17.2",
-    "uuid": "^2.0.2"
+    "uuid": "^2.0.2",
+    "snyk": "^1.316.2"
   },
   "peerDependencies": {
     "bedrock": "^1.0.0",
@@ -41,5 +44,6 @@
   },
   "directories": {
     "lib": "./lib"
-  }
+  },
+  "snyk": true
 }
